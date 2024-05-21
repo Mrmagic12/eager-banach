@@ -1,0 +1,12 @@
+img {
+  background-size: cover;
+}
+
+body {
+  background-color: coral;
+}
+
+.navbar {
+  background-color: green;
+  color: white;
+}
