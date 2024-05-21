@@ -31,13 +31,14 @@ SECRET_KEY = "django-insecure-5d@gwyyhvg-uf=z2x5ics55hm=^&#=px+l-i@49=(&)o473bn(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pnrdp6-8000.csb.app']
+ALLOWED_HOSTS = ['pnrdp6-8000.csb.app', 'wrwy8f-8000.csb.app']
 
 CSRF_FAILUER_VIEW = 'myapp.views.my_csrf_failure_view'
 
 CSRF_TRUSTED_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = ['https://pnrdp6-8000.csb.app']
+CSRF_TRUSTED_ORIGINS = ['https://pnrdp6-8000.csb.app',
+                        'https://wrwy8f-8000.csb.app']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -62,8 +63,6 @@ INSTALLED_APPS = [
     "djangocms_text_ckeditor",
     "djangocms_alias",
     "djangocms_versioning",
-    "djangocms_file",
-    "djangocms_snippet",
     "sekizai",
     "treebeard",
     "parler",
