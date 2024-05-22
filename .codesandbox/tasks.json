@@ -16,7 +16,7 @@
       "restartOn": {
         "files": ["main.py"],
         "branch": false,
-        "resume": true
+        "resume": false
       }
     },
     "install-dependencies": {
