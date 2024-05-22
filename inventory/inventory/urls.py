@@ -25,9 +25,9 @@ from django.views.static import serve
 
 urlpatterns = i18n_patterns(
     path("en/jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
-    path("en/admin/", admin.site.urls),
+    path("admin/", admin.site.urls),
     path("en/filer/", include("filer.urls")),
-    path("en/", include("cms.urls")),
+    path("", include("cms.urls")),
     path("en/media/", serve, {"document_root": settings.MEDIA_ROOT}),
 )
 
