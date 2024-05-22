@@ -50,6 +50,14 @@
           "branch": "false",
           "resume": "false"
         }
+      },
+      "set-env": {
+        "name": "Set Virtual Environment",
+        "command": "source ./.venv/bin/activate",
+        "restartOn": {
+          "branch": false,
+          "resume": false
+        }
       }
     }
   }
