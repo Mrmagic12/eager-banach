@@ -26,6 +26,38 @@
         "files": ["requirements.txt"],
         "branch": false,
         "resume": false
+      },
+      "update-pip": {
+        "name": "Update pip",
+        "command": "pip install --upgrade pip",
+        "restartOn": {
+          "branch": false,
+          "resume": false
+        }
+      },
+      "format-code": {
+        "format": "Format Code",
+        "command": "npx prettier --write",
+        "restartOn": {
+          "branch": "false",
+          "resume": "false"
+        }
+      },
+      "lint-code": {
+        "name": "Lint code",
+        "command": "npx eslint . --fix",
+        "restartOn": {
+          "branch": "false",
+          "resume": "false"
+        }
+      },
+      "set-env": {
+        "name": "Set Virtual Environment",
+        "command": "source ./.venv/bin/activate",
+        "restartOn": {
+          "branch": false,
+          "resume": false
+        }
       }
     }
   }
