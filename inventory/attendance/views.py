@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Admin, Announcements, Attendance, Employee, Events, MobileScanUsers, StaticTime
-from .serializers import AdminSerializers, AnnouncementSerializers, AttendanceSerializers, EventsSerializers, MobileScanUserSerializers, StaticTimesSerializers
+from .serializers import AdminSerializers, AnnouncementSerializers, AttendanceSerializers, EmployeesSerializers, EventsSerializers, MobileScanUserSerializers, StaticTimesSerializers
 from .forms import AdminForms, AnnouncementsForms, AttendanceForms, EmployeeForms, EventsForms, MobileScanUsersForms, StaticTimeForms
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -313,4 +313,232 @@ def admin_details(request, pk):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         admin.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def announcement_list(request):
+    if request.method == 'GET':
+        data = Announcements.objects.all()
+
+        serializers = AnnouncementSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = AnnouncementSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def announcement_details(request, pk):
+    try:
+        announcement = Admin.objects.get(pk=pk)
+    except Announcements.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            announcement, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        announcement.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def attendance_list(request):
+    if request.method == 'GET':
+        data = Attendance.objects.all()
+
+        serializers = AttendanceSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = AttendanceSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def attendance_details(request, pk):
+    try:
+        attendance = Attendance.objects.get(pk=pk)
+    except Announcements.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            attendance, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        attendance.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def employee_list(request):
+    if request.method == 'GET':
+        data = Employee.objects.all()
+
+        serializers = EmployeesSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = EmployeesSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def employee_details(request, pk):
+    try:
+        employee = Attendance.objects.get(pk=pk)
+    except Employee.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            employee, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        employee.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def event_list(request):
+    if request.method == 'GET':
+        data = Events.objects.all()
+
+        serializers = EventsSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = EventsSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def event_details(request, pk):
+    try:
+        event = Events.objects.get(pk=pk)
+    except Employee.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            event, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        event.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def statictime_list(request):
+    if request.method == 'GET':
+        data = StaticTime.objects.all()
+
+        serializers = StaticTimesSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = StaticTimesSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def statictime_details(request, pk):
+    try:
+        statictime = StaticTime.objects.get(pk=pk)
+    except StaticTime.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            statictime, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        statictime.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def mobile_scan_user_list(request):
+    if request.method == 'GET':
+        data = MobileScanUsers.objects.all()
+
+        serializers = MobileScanUserSerializers(
+            data, context={'request': request}, many=True)
+
+        return Response(serializers.data)
+
+    elif request.method == 'POST':
+        serializers = MobileScanUserSerializers(data=request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT', 'DELETE'])
+def mobile_scan_user_details(request, pk):
+    try:
+        mobile = MobileScanUsers.objects.get(pk=pk)
+    except MobileScanUsers.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializers = AdminSerializers(
+            mobile, data=request.data, context={'request': request})
+        if serializers.is_valid():
+            serializers.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        mobile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
