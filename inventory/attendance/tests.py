@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from .models import Admin, Announcements, Employee
+from models import Admin, Announcements, Employee
 
 
 class AdminTestCase(TestCase):

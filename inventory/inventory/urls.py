@@ -34,20 +34,23 @@ urlpatterns = i18n_patterns(
     path('admin_details/<int:pk>', views.admin_details, name='admin-details'),
     path('announcement_details/<int:pk>/', views.announcement_details,
          name='announcement-detail'),
-    re_path(r"^admin_list/$", views.admin_list),
-    re_path(r"^en/api/admin_details/([0-9])$", views.admin_details),
-    re_path(r"^en/api/announcement_list/$", views.announcement_list),
+    re_path(r"^attendance/api/admin_list/$", views.admin_list),
+    re_path(r"^attendance/api/admin_details/([0-9])$", views.admin_details),
+    re_path(r"^attendance/api/announcement_list/$", views.announcement_list),
     re_path(
-        r"^en/api/announcement_details/([0-9])$", views.announcement_details),
-    re_path(r"^en/api/employee_list/$", views.employee_list),
-    re_path(r"^en/api/employee_details/([0-9])$", views.employee_details),
-    re_path(r"^en/api/event_list/$", views.event_list),
-    re_path(r"^en/api/event_details/([0-9])$", views.event_details),
-    re_path(r"^en/api/mobile_scan_user_list/$", views.mobile_scan_user_list),
-    re_path(r"^en/api/mobile_scan_user_details/([0-9])$",
+        r"^attendance/api/announcement_details/([0-9])$", views.announcement_details),
+    re_path(r"^attendance/api/employee_list/$", views.employee_list),
+    re_path(
+        r"^attendance/api/employee_details/([0-9])$", views.employee_details),
+    re_path(r"^attendance/api/event_list/$", views.event_list),
+    re_path(r"^attendance/api/event_details/([0-9])$", views.event_details),
+    re_path(r"^attendance/api/mobile_scan_user_list/$",
+            views.mobile_scan_user_list),
+    re_path(r"^attendance/api/mobile_scan_user_details/([0-9])$",
             views.mobile_scan_user_details),
-    re_path(r"^en/api/statictime_list/$", views.statictime_list),
-    re_path(r"^en/api/statictime_details/([0-9])$", views.statictime_details),
+    re_path(r"^attendance/api/statictime_list/$", views.statictime_list),
+    re_path(
+        r"^attendance/api/statictime_details/([0-9])$", views.statictime_details),
 )
 
 
