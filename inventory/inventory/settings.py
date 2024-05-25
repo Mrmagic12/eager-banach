@@ -237,7 +237,9 @@ SITE_ID = 1
 # A base template is part of this setup
 # https://docs.django-cms.org/en/release-4.1.x/reference/configuration.html#cms-templates
 
-CMS_TEMPLATES = (("base.html", _("Standard")),)
+CMS_TEMPLATES = [
+    (("base.html", _("Standard")),)
+]
 
 # Enable permissions
 # https://docs.django-cms.org/en/release-4.1.x/topics/permissions.html
