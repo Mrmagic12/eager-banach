@@ -1,11 +1,15 @@
 {# Replace this with your base template #}
 {% extends "bootstrap5/base.html" %}
-{% load cms_tags sekizai_tags %}
+{% load cms_tags menu_tags sekizai_tags %}
 <!DOCTYPE html>
 <html lang="en">
-    {% include 'header.html' %}
+<head>
+    {% block css %}{% endblock %}
+</head>
+<body>
+    {% cms_toolbar %}
 
-    <body class="bg-light">
-        {% include 'navigation.html' %}
-    </body>
+        {% block javascript %}{% endblock %}
+    </div>
+</body>
 </html>

@@ -1,6 +1,43 @@
 {% load static %}
-<nav class="navbar navbar navbar-expand-lg navbar-light bg-body shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="/"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-body shadow-sm">
+    <div class="container py-1">
+        <div class="navbar-brand mb-0 h1">
+            <div class="d-flex align-items-center">
+                <img src="{% static 'includes/images/logo.jpg' %}" class="rounded-circle" width="50" height="50" alt="">
+                <div class="brand ms-3 d-none d-md-block">
+                    <span>Attendance Monitoring</span>
+                    <div class="h6 font-weight-normal">Sinonoc, Sinacaban, Misamis Occidental</div>
+                </div>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" id="mnuHome" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mnuAnnouncement" href="#">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mnuEvent" href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mnuFaculty" href="#">Employees</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <img src="{% static 'includes/images/avatar.png' %}" 
+                    class="nav-link dropdown-toggle rounded-circle border"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    height="42" width="42"
+                    >
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
