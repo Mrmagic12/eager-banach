@@ -63,9 +63,8 @@ class Announcements(models.Model):
     """
     This model represents the announcements made by the admin.
     """
-    announcement_id = models.AutoField(
-        primary_key=True, null=False, blank=False)
-    when_date = models.DateTimeField(null=False, blank=False)
+    announcement_id = models.AutoField(primary_key=True, null=False, blank=False)
+    when_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=255, null=False, blank=False)
     description = models.TextField(null=False, blank=False)
     published = models.BooleanField(null=False, blank=False)
@@ -130,7 +129,7 @@ class Events(models.Model):
     This model represents the public events published by the admin.
     """
     event_id = models.AutoField(primary_key=True, null=False, blank=False)
-    event_date = models.DateTimeField(null=False, blank=False)
+    event_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=255, null=False, blank=False)
     description = models.TextField(null=False, blank=False)
     published = models.BooleanField(null=False, blank=False)
