@@ -19,16 +19,38 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.i18n import JavaScriptCatalog
 from django.views.static import serve
+from attendance import views
 
 urlpatterns = i18n_patterns(
-    path("en/jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
+    path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("admin/", admin.site.urls),
-    path("en/filer/", include("filer.urls")),
+    path("filer/", include("filer.urls")),
     path("", include("cms.urls")),
-    path("en/media/", serve, {"document_root": settings.MEDIA_ROOT}),
+    path("media/", serve, {"document_root": settings.MEDIA_ROOT}),
+    path('admin_list', views.admin_list, name='admin-list'),
+    path('admin_details/<int:pk>', views.admin_details, name='admin-details'),
+    path('announcement_details/<int:pk>/', views.announcement_details,
+         name='announcement-detail'),
+    re_path(r"^attendance/api/admin_list/$", views.admin_list),
+    re_path(r"^attendance/api/admin_details/([0-9])$", views.admin_details),
+    re_path(r"^attendance/api/announcement_list/$", views.announcement_list),
+    re_path(
+        r"^attendance/api/announcement_details/([0-9])$", views.announcement_details),
+    re_path(r"^attendance/api/employee_list/$", views.employee_list),
+    re_path(
+        r"^attendance/api/employee_details/([0-9])$", views.employee_details),
+    re_path(r"^attendance/api/event_list/$", views.event_list),
+    re_path(r"^attendance/api/event_details/([0-9])$", views.event_details),
+    re_path(r"^attendance/api/mobile_scan_user_list/$",
+            views.mobile_scan_user_list),
+    re_path(r"^attendance/api/mobile_scan_user_details/([0-9])$",
+            views.mobile_scan_user_details),
+    re_path(r"^attendance/api/statictime_list/$", views.statictime_list),
+    re_path(
+        r"^attendance/api/statictime_details/([0-9])$", views.statictime_details),
 )
 
 

@@ -1,11 +1,11 @@
 from django import forms
 from .models import Admin, Announcements, Attendance, Employee, Events, MobileScanUsers, StaticTime
-from .serializers import AdminSerializers, AnnouncementSerializers, EventsSerializers, AttendanceSerializers, EmployeesSerializers, MobileScanUserSerializer, StaticTimesSerializer
+from .serializers import AdminSerializers, AnnouncementSerializers, EventsSerializers, AttendanceSerializers, EmployeesSerializers, MobileScanUserSerializers, StaticTimesSerializers
 
 
 class AdminForms(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
-    password = forms.PasswordInput(label='Password', max_length=100)
+    password = forms.PasswordInput()
     token = forms.CharField(label='Token', max_length=100)
     user_type = forms.CharField(label='User Type', max_length=100)
 
@@ -16,9 +16,9 @@ class AdminForms(forms.Form):
 
 
 class AnnouncementsForms(forms.Form):
-    date = forms.DateTimeField(label='Date')
+    date = forms.DateField(label='Date')
     title = forms.CharField(label='Title', max_length=255)
-    description = forms.TextField(label='Description')
+    description = forms.CharField(widget=forms.Textarea, label='Description')
     published = forms.BooleanField()
 
     class Meta:
@@ -28,9 +28,9 @@ class AnnouncementsForms(forms.Form):
 
 
 class EventsForms(forms.Form):
-    date = forms.DateTimeField(label='Date')
+    date = forms.DateField(label='Date')
     title = forms.CharField(label='Title', max_length=255)
-    description = forms.TextField(label='Description')
+    description = forms.CharField(widget=forms.Textarea, label='Description')
     published = forms.BooleanField()
 
     class Meta:
@@ -57,8 +57,8 @@ class AttendanceForms(forms.Form):
     pm_out = forms.DateTimeField(label='PM Out')
     pm_mask_out = forms.DateTimeField(label='PM out Mask')
     remarks = forms.CharField(label='Remaks', max_length=255)
-    leave_status = forms.CharField(label='Leave Reason', choices=leaves)
-    leave_reason = forms.Textarea(label='Leave Reason')
+    leave_status = forms.ChoiceField(choices=leaves, label='Leave Reason')
+    leave_reason = forms.CharField(widget=forms.Textarea, label='Description')
 
     class Meta:
         models = Attendance
@@ -77,7 +77,7 @@ class EmployeeForms(forms.Form):
     ranks = forms.CharField(label='Ranks', max_length=255)
     assignment_level = forms.CharField(
         label='Assignment Level', max_length=255)
-    password = forms.PasswordField(label='Password')
+    password = forms.PasswordInput()
 
     class Meta:
         models = Employee
@@ -88,11 +88,11 @@ class EmployeeForms(forms.Form):
 
 class MobileScanUsersForms(forms.Form):
     account_name = forms.CharField(label='Account Name', max_length=255)
-    password = forms.PasswordField(label='Password')
+    password = forms.PasswordInput()
 
     class Meta:
         models = MobileScanUsers
-        serializers = MobileScanUserSerializer
+        serializers = MobileScanUserSerializers
         fields = ['account_name', 'password']
 
 
@@ -105,5 +105,5 @@ class StaticTimeForms(forms.Form):
 
     class Meta:
         models = StaticTime
-        serializers = StaticTimesSerializer
+        serializers = StaticTimesSerializers
         fields = ['employee_type', 'am_in', 'am_out', 'pm_in', 'pm_out']

@@ -1,2 +1,11 @@
 {# Replace this with your base template #}
 {% extends "bootstrap5/base.html" %}
+{% load cms_tags sekizai_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'header.html' %}
+
+    <body class="bg-light">
+        {% include 'navigation.html' %}
+    </body>
+</html>
