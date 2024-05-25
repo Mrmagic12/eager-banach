@@ -97,7 +97,7 @@ class AnnouncementsTest(TestCase):
 
 class EmployeeTest(TestCase):
     def setUp(self):
-        Employee.objects.get(
+        Employee.objects.create(
             firstname='Jobet',
             lastname='Casquejo',
             middlename='Pulgo',
