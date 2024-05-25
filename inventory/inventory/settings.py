@@ -239,7 +239,7 @@ SITE_ID = 1
 
 CMS_TEMPLATES = (
     ("base.html", _("Standard")),
-    ("attendance_templates/index.html", _("Custom"))
+    ("home.html", _("Custom"))
 )
 
 # Enable permissions

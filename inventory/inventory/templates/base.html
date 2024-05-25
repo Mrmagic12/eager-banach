@@ -1,11 +1,15 @@
 {# Replace this with your base template #}
 {% extends "bootstrap5/base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include 'attendance_templates/header.html' %}
+    {% block css %}{% endblock %}
 </head>
 <body>
-    {% include 'attendance_templates/navigation.html' %}
+    {% cms_toolbar %}
+
+        {% block javascript %}{% endblock %}
+    </div>
 </body>
 </html>
