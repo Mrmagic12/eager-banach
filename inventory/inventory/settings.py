@@ -86,7 +86,9 @@ INSTALLED_APPS = [
     "djangocms_frontend.contrib.navigation",
     "djangocms_frontend.contrib.tabs",
     "djangocms_frontend.contrib.utilities",
-    "attendance"
+    "attendance",
+    "rest_framework",
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,7 @@ MIDDLEWARE = [
     "cms.middleware.toolbar.ToolbarMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "cms.middleware.language.LanguageCookieMiddleware",
+    "corsheaders.middleware.CorsMiddleware"
 ]
 
 ROOT_URLCONF = "inventory.urls"
